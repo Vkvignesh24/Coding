@@ -1,0 +1,140 @@
+<!doctype html>
+<html> 
+ <head> 
+  <title>GPA Calculation</title> 
+ <style type="text/css" id="dcoder_stylesheet">body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+   
+    border-radius: 3px;
+}
+
+label {
+    font-weight: bold;
+}
+
+
+#gpaValue {
+    font-weight: bold;
+    color: #007bff; 
+}
+
+
+input[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="button"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}</style></head> 
+ <body> 
+  <h1>GPA Calculation Form</h1> 
+  <form id="gpaForm"> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <th>Subject Code</th> 
+      <th>Subject Name</th> 
+      <th>Credit</th> 
+      <th>Mark</th> 
+     </tr> 
+     <tr> 
+      <td>MA2251</td> 
+      <td>Discrete Mathematics and Probability</td> 
+      <td><input type="text" name="credit1"></td> 
+      <td><input type="text" name="mark1"></td> 
+     </tr> 
+     <tr> 
+      <td>CS2251</td> 
+      <td>Database Management Systems</td> 
+      <td><input type="text" name="credit2"></td> 
+      <td><input type="text" name="mark2"></td> 
+     </tr> 
+     <tr> 
+      <td>IT2251</td> 
+      <td>Data Structures</td> 
+      <td><input type="text" name="credit3"></td> 
+      <td><input type="text" name="mark3"></td> 
+     </tr> 
+     <tr> 
+      <td> IT2252 </td> 
+      <td>Operation system #</td> 
+      <td><input type="text" name="credit3"></td> 
+      <td><input type="text" name="mark3"></td> 
+     </tr> 
+     <tr> 
+      <td>IT2253</td> 
+      <td>Web Essential</td> 
+      <td><input type="text" name="credit3"></td> 
+      <td><input type="text" name="mark3"></td> 
+     </tr> 
+     <tr> 
+      <td>IT2254</td> 
+      <td>Data Structures Laboratory</td> 
+      <td><input type="text" name="credit3"></td> 
+      <td><input type="text" name="mark3"></td> 
+     </tr> 
+     <tr> 
+      <td>IT2255</td> 
+      <td>Web Essential Laboratory</td> 
+      <td><input type="text" name="credit3"></td> 
+      <td><input type="text" name="mark3"></td> 
+     </tr> 
+     <tr> 
+      <td>CS2251</td> 
+      <td>Database Management System Laboratory</td> 
+      <td><input type="text" name="credit3"></td> 
+      <td><input type="text" name="mark3"></td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <br> <label for="gpa">GPA:</label> <span id="gpaValue"></span> 
+   <br> 
+   <br> 
+   <input type="button" value="Calculate GPA" onclick="calculateGPA()"> 
+  </form> 
+ 
+</body></html>

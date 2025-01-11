@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>RSA Encryption</title> 
+ </head> 
+ <body> 
+  <center> 
+   <h1>RSA Algorithm</h1> 
+   <h2>Implemented Using HTML &amp; JavaScript</h2> 
+   <hr> 
+   <table> 
+    <tbody>
+     <tr>
+      <td>Enter First Prime Number:</td>
+      <td><input type="number" value="53" id="p"></td>
+     </tr> 
+     <tr>
+      <td>Enter Second Prime Number:</td>
+      <td><input type="number" value="59" id="q"></td>
+     </tr> 
+     <tr>
+      <td>Enter the Message (cipher text):<br>[A=1, B=2,...]</td>
+      <td><input type="number" value="89" id="msg"></td>
+     </tr> 
+     <tr>
+      <td>Public Key:</td>
+      <td><p id="publickey"></p></td>
+     </tr> 
+     <tr>
+      <td>Exponent:</td>
+      <td><p id="exponent"></p></td>
+     </tr> 
+     <tr>
+      <td>Private Key:</td>
+      <td><p id="privatekey"></p></td>
+     </tr> 
+     <tr>
+      <td>Cipher Text:</td>
+      <td><p id="ciphertext"></p></td>
+     </tr> 
+     <tr>
+      <td colspan="2"><button onclick="RSA();">Apply RSA</button></td>
+     </tr> 
+    </tbody>
+   </table> 
+  </center> 
+  <script>
+        function RSA() {
+            let p = parseInt(document.getElementById('p').value);
+            let q = parseInt(document.getElementById('q').value);
+            let no = parseInt(document.getElementById('msg').value);
+            
+            if (!isPrime(p) || !isPrime(q)) {
+                alert("Please enter prime numbers.");
+                return;
+            }
+            
+            if (p < 0 || q < 0 || no < 0) {
+                alert("Please enter non-negative numbers.");
+                return;
+            }
+            
+            let n = p * q;
+            let t = (p - 1) * (q - 1);
+            let e = 2;
+            while (e < t && gcd(e, t) != 1) e++;
+            let d = modInverse(e, t);
+            let ct = modPow(no, e, n);
+            document.getElementById('publickey').innerText = n;
+            document.getElementById('exponent').innerText = e;
+            document.getElementById('privatekey').innerText = d;
+            document.getElementById('ciphertext').innerText = ct;
+        }
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            let i = 5;
+            while (i * i <= num) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+                i += 6;
+            }
+            return true;
+        }
+
+        function gcd(a, b) {
+            return !b ? a : gcd(b, a % b);
+        }
+
+        function modInverse(a, m) {
+            for (let x = 1; x < m; x++) {
+                if ((a * x) % m === 1) return x;
+            }
+            return 1;
+        }
+
+        function modPow(base, exp, mod) {
+            let result = 1;
+            while (exp > 0) {
+                if (exp % 2 === 1) result = (result * base) % mod;
+                base = (base * base) % mod;
+                exp = Math.floor(exp / 2);
+            }
+            return result;
+        }
+    </script>  
+ 
+</body></html>
